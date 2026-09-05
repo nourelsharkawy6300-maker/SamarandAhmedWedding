@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <title>سمر & أحمد | دعوة زفاف</title>
+  <meta name="description" content="يسعدنا دعوتكم لحضور حفل زفاف سمر و أحمد">
+
+  <!-- ===== Fonts: Alexandria & Tajawal ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- ===== FontAwesome ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- ===== Swiper.js ===== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- ===== Local Stylesheets ===== -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+
+  <!-- ================= PRELOADER / ENVELOPE ================= -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-inner">
+      <p class="preloader-hint">اضغط لفتح الدعوة</p>
+
+      <!-- تم استخدام div لحل مشكلة المتصفح وتداخل الأزرار -->
+      <div id="envelope" class="envelope" role="button" tabindex="0" aria-label="افتحوا الدعوة">
+        <span class="envelope-back"></span>
+        <span class="letter">
+          <span class="letter-monogram">س &amp; أ</span>
+          <span class="letter-sub">يتشرفان بدعوتكم لحضور حفل زفافهما</span>
+          <button type="button" id="openInviteBtn" class="btn btn-primary letter-cta">فتح بطاقة الدعوة</button>
+          
+          <button type="button" id="audioToggle" class="audio-toggle" aria-label="تشغيل الموسيقى" aria-pressed="false">
+            <svg class="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-sound-off" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 5V4L8 9H4Z" fill="currentColor"/><path d="M16 9l4 6M20 9l-4 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+        </span>
+        <span class="envelope-flap"></span>
+
+        <!-- تأثير سهم كيوبيد وانفجار القلوب -->
+        <div class="cupid-arrow" id="cupidArrow">
+          <span class="arrow-shaft"></span>
+          <span class="arrow-head"></span>
+          <span class="arrow-glow"></span>
+        </div>
+        <div class="heart-burst" id="heartBurst"></div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgAudio" loop preload="none">
+    <source src="assets/audio/wedding-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- زرار الصوت العائم في الموقع -->
+  <button id="soundToggle" class="sound-toggle" type="button" aria-label="إيقاف / تشغيل">
+    <i class="fa-solid fa-music"></i>
+  </button>
+
+  <!-- ================= MAIN SITE CONTENT ================= -->
+  <main id="mainContent" class="main-content" aria-hidden="true">
+
+    <!-- HERO SECTION -->
+    <header class="section hero-section">
+      <div class="hero-ornament top" aria-hidden="true"><i class="fa-solid fa-gem"></i></div>
+      
+      <p class="hero-eyebrow reveal-up">بسم الله الرحمن الرحيم</p>
+      <div class="hero-verse reveal-up">
+        <p>"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا"</p>
+      </div>
+
+      <!-- صورة العرسان بإطار القوس -->
+      <div class="hero-image-wrap reveal-up">
+        <img src="assets/images/couple.png" alt="سمر وأحمد" class="hero-image" loading="lazy">
+      </div>
+
+      <div class="hero-names reveal-up">
+        <h1 class="bride-name">سمر</h1>
+        <span class="hero-ampersand"><i class="fa-solid fa-heart"></i></span>
+        <h1 class="groom-name">أحمد</h1>
+      </div>
+
+      <p class="hero-subtitle reveal-up">يتشرفان بدعوتكم لمشاركتهما فرحة الزفاف</p>
+      <div class="hero-date reveal-up">
+        <i class="fa-regular fa-calendar-heart"></i>
+        <span>الجمعة، ١٨ سبتمبر ٢٠٢٦</span>
+      </div>
+
+      <div class="countdown reveal-up" id="countdown">
+        <div class="countdown-item"><span class="countdown-value" id="cd-days">00</span><span class="countdown-label">يوم</span></div>
+        <div class="countdown-item"><span class="countdown-value" id="cd-hours">00</span><span class="countdown-label">ساعة</span></div>
+        <div class="countdown-item"><span class="countdown-value" id="cd-minutes">00</span><span class="countdown-label">دقيقة</span></div>
+        <div class="countdown-item"><span class="countdown-value" id="cd-seconds">00</span><span class="countdown-label">ثانية</span></div>
+      </div>
+
+      <div id="weddingDayMessage" class="wedding-day-message" hidden>
+        <h2>النهاردة فرحنا! 💍🎉</h2>
+      </div>
+      <div id="confettiContainer" class="confetti-container" aria-hidden="true"></div>
+
+      <button id="addToCalendarBtn" class="btn-outline reveal-up" type="button">
+        <i class="fa-regular fa-calendar-plus"></i>
+        <span>أضف الحدث إلى تقويم جوجل</span>
+      </button>
+    </header>
+
+    <!-- SHARED PHOTO DRIVE -->
+    <section id="shareDrive" class="section drive-section">
+      <div class="drive-card reveal-up">
+        <div class="drive-icon"><i class="fa-solid fa-camera-retro"></i></div>
+        <h3>شاركونا لحظاتكم</h3>
+        <p>هل التقطتم صورًا جميلة في حفلنا؟ يسعدنا أن نراها! شاركوا صوركم معنا عبر مجلد دروب بوكس الخاص بالمناسبة.</p>
+        <a href="https://www.dropbox.com/request/nq7h6ck1dg6wp21zpziq" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%;">
+          <i class="fa-brands fa-dropbox"></i>
+          <span>ارفعوا صوركم هنا</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONGRATULATE GUESTBOOK -->
+    <section id="congratulate" class="section congratulate-section">
+      <div class="section-heading reveal-up">
+        <span class="section-eyebrow">شاركونا الفرحة</span>
+        <h2 class="section-title">رسائل التهنئة</h2>
+        <div class="heading-divider"><i class="fa-solid fa-heart"></i></div>
+        <p class="section-desc">اكتبوا كلمة حلوة من قلبكم لسمر وأحمد</p>
+      </div>
+
+      <form id="wishForm" class="congratulate-form reveal-up">
+        <div class="form-group">
+          <label for="wishName">الاسم</label>
+          <input type="text" id="wishName" placeholder="اكتب اسمك الكريم" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="wishMessage">رسالتكم</label>
+          <textarea id="wishMessage" rows="3" placeholder="اكتب رسالة التهنئة للعروسين..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%;">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>إرسال التهنئة</span>
+        </button>
+      </form>
+
+      <div class="vitrine-wrap reveal-up" style="margin-top: 40px;">
+        <div class="vitrine-sparkles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="messages-vitrine" id="vitrine">
+          <div style="text-align: center; color: var(--c-text-muted); padding: 20px;">
+            <i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل الرسائل...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-hearts" aria-hidden="true">
+        <i class="fa-solid fa-heart"></i> <i class="fa-solid fa-heart"></i> <i class="fa-solid fa-heart"></i>
+      </div>
+      <p class="footer-couple">سمر &amp; أحمد © 2026</p>
+      <div class="footer-divider" aria-hidden="true"></div>
+      
+      <div class="designer-signature">
+        <p class="signature-arabic-top">صُنع بكل الحب بواسطة</p>
+        <p class="signature-name"><span class="signature-eng">Eng. Nour Mawhoub</span></p>
+        <p class="signature-arabic-bottom">مهندس برمجيات | مطور واجهات الويب</p>
+        
+        <div class="social-row">
+          <a href="https://www.facebook.com/N0UR11?locale=ar_AR" target="_blank" rel="noopener noreferrer" class="social-icon facebook" aria-label="Facebook" style="--i:0">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/nour_elsharkawy249/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram" style="--i:1">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/201066594552" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" aria-label="WhatsApp" style="--i:2">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+<!-- ==========================================
+       MAGICAL BUTTERFLIES (فراشات بتطير ع الهادي)
+  =========================================== -->
+  <div class="butterflies-container" aria-hidden="true">
+    <div class="bf-wrap bf-1"><div class="butterfly"></div></div>
+    <div class="bf-wrap bf-2"><div class="butterfly pink"></div></div>
+    <div class="bf-wrap bf-3"><div class="butterfly"></div></div>
+    <div class="bf-wrap bf-4"><div class="butterfly pink"></div></div>
+  </div>
+
+  <!-- ===== Firebase V8 Scripts ===== -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <!-- ===== Local Scripts ===== -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/guestbook.js"></script>
+</body>
+</html>
